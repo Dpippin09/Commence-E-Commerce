@@ -1,24 +1,26 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('your_database', 'your_username', 'your_password', {
-  host: 'your_host',
-  dialect: 'postgres',
-  // other options
-});
+const sequelize = require('../config/connection');
 
 class Tag extends Model {}
 
 Tag.init(
   {
     // Define columns here
-    name: {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    tag_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // Add more columns as needed
+
+    
   },
   {
     sequelize,
-    timestamps: false, // Set to true if you want createdAt and updatedAt columns
+    timestamps: false, 
     freezeTableName: true,
     underscored: true,
     modelName: 'tag',

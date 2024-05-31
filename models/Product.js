@@ -1,16 +1,11 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('your_database', 'your_username', 'your_password', {
-  host: 'your_host',
-  dialect: 'postgres',
-  // other options
-});
-
+const sequelize = require('../config/connection');
 class Product extends Model {}
 
 Product.init(
   {
-    // Define columns here
-    name: {
+  
+    product_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -21,8 +16,16 @@ Product.init(
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
     },
-    // Add more columns as needed
+    category_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'category',
+        key: 'id',
+      },
+    },
   },
+    
+  
   {
     sequelize,
     timestamps: true, 
@@ -31,3 +34,5 @@ Product.init(
     modelName: 'product',
   }
 );
+
+module.exports = Product;

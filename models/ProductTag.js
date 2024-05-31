@@ -1,9 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = new Sequelize('your_database', 'your_username', 'your_password', {
-  host: 'your_host',
-  dialect: 'postgres',
-  // other options
-});
+const sequelize = require('../config/connection');
 
 class ProductTag extends Model {}
 
