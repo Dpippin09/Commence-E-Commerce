@@ -6,7 +6,7 @@ const ProductTag = require('./ProductTag');
 
 
 
-// Define relationships
+// relationships
 Product.belongsTo(Category, { foreignKey: 'category_id' });
 Category.hasMany(Product, { foreignKey: 'category_id' });
 
